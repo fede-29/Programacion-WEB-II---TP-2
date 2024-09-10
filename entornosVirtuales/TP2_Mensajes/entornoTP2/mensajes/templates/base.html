@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block titulo %} Principal {% endblock %}</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+    </head>
+    <body>
+        <h2> Programacion WEB II</h2>
+        <nav>
+            <ul>
+                <li><a href="{% url 'principal' %}"><h3>Inicio</h3></a></li>
+                <li><a href="{% url 'enviar_mensaje' %}"><h3>Enviar Mensaje</h3></a></li>
+                <li><a href="{% url 'ver_mensaje' %}"><h3>Ver Mensaje</h3></a></li>
+            </ul>
+        </nav>
+        {% block presentacion %}
+        <div>
+            <h2>Bienvenido</h2>
+            <p>En este trabajo practico la tarea era poder enviar un mensaje y poder leerlo/borrarlo, le invito a que lo pueda hacer</p>
+        </div>
+        {% endblock %}
+
+        {% block contenido %}{% endblock %}
+
+        <footer>
+            <h2>Docente: Julio Casco</h2>
+            <h2>Estudiante: Federico Sassenberg</h2><br>
+        </footer>
+    </body>
+</html>

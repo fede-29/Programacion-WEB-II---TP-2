@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block titulo %} Ver Mensaje {% endblock %}
+
+{% block presentacion %}
+    <h2>Ver Mensajes</h2>
+    <p>En esta sección puedes ver los mensajes y eliminarlos si es necesario.</p>
+{% endblock %}
+
+{% block contenido %}
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Remitente</th>
+                    <th>Destinatario</th>
+                    <th>Mensaje</th>
+                    <th>Fecha de Envío</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for mensaje in mensajes %}
+                <tr>
+                    <td>{{ mensaje.remitente }}</td>
+                    <td>{{ mensaje.destinatario }}</td>
+                    <td>{{ mensaje.mensaje }}</td>
+                    <td>{{ mensaje.fecha_envio }}</td>
+                    <td>
+                        <form action="{% url 'eliminar_mensaje' mensaje.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="delete-button">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5">No hay mensajes para mostrar.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{%block titulo%} Enviar Mensaje {%endblock%}
+
+{% block presentacion %}
+    <h2>Enviar Mensaje</h2>
+    <p>En esta seccion, formule y envie su mensaje por favor</p>
+{%endblock%}
+
+{% block contenido %} 
+    <form method="post" action="{%url 'enviar_mensaje' %}" >
+        {% csrf_token %}
+        <label for="remitente"> Remitente:</label><br>
+        <input type="text" id="remitente" name="remitente" required><br><br>
+
+        <label for="destinatario">Destinatario:</label><br>
+        <input type="text" id="destinatario" name="destinatario" required><br><br>
+
+        <label for="mensaje">Mensaje:</label><br>
+        <textarea type="text" id="mensaje" name="mensaje" rows="4" cols="50" required></textarea><br><br>
+
+        <button type="submit">Enviar</button>
+    </form>
+    <br><br>
+{% endblock %}
+
+{% block pie %}{%endblock%}
